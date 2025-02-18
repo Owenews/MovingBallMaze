@@ -24,7 +24,7 @@ public class BallControl : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Trigger Enter: " + other.gameObject.tag);
+        Debug.Log("Trigger : " + other.gameObject.tag);
 
         if (other.gameObject.tag == "FinishZone")
         {
