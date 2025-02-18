@@ -11,7 +11,7 @@ public class BallControl : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    /*void Update()
     {
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -20,14 +20,14 @@ public class BallControl : MonoBehaviour
 
         rb.AddForce(movement * speed);
 
-    }
+    }*/
 
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Trigger : " + other.gameObject.tag);
 
         if (other.gameObject.tag == "FinishZone")
-        {
+        {   
             rb.isKinematic = true;
             transform.position = respawnPoint.position;
             rb.isKinematic = false;

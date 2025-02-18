@@ -4,7 +4,8 @@ public class BoardControl : MonoBehaviour
 {
     public float rotationSpeed = 50f;
     public float maxRotation = 10f;
-    void Start()
+
+    void Update()
     {
         float rotationX = Input.GetAxis("Vertical") * rotationSpeed * Time.deltaTime;
         float rotationZ = Input.GetAxis("Horizontal") * rotationSpeed * Time.deltaTime;
@@ -15,10 +16,8 @@ public class BoardControl : MonoBehaviour
         if (currentRotation.z > 180f) currentRotation.z -= 360f;
 
         float newRotationX = Mathf.Clamp(currentRotation.x + rotationX, -maxRotation, maxRotation);
-        float newRotationZ = Mathf.Clamp(currentRotation.x + rotationZ, -maxRotation, maxRotation);
+        float newRotationZ = Mathf.Clamp(currentRotation.z + rotationZ, -maxRotation, maxRotation);
 
-        transform.localEulerAngles = new Vector3(newRotationX, currentRotation.y, newRotationZ);
-
+        transform.localRotation = Quaternion.Euler(newRotationX, currentRotation.y, newRotationZ);
     }
-
 }
